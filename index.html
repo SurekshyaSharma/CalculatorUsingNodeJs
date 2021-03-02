@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Web App" content="Calculator">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Surekshya Sharma">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web Calculator</title>
+        <!-- jQuery -->
+        <!--  -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+        <!-- linking javascript to HTMl -->
+        <script type="text/javascript" src="main.js"></script>
+        <!-- linking stylesheet to HTMl -->
+        <link rel="stylesheet" href="style.css">
+        <script>
+            //document ready function
+            $(() => {
+                addMessages({User:"sana", Input:"1+2=3"})
+                getMessages();
+            })
+            function addMessages(message){
+                $("#messages").append(`<h3> ${message.User} </h3> <p> ${message.Input} </p>`)
+            }
+            //backend to front end
+            // http get request
+            function getMessages() {
+                $.get('http://localhost:8000/messages', (data) => {
+                    console.log(data)
+                    //callback that provides data
+                    data.forEach(addMessages);
+                })
+            }
+            
+            function getMessages(message) {
+                $.post('http://localhost:8000/messages', message)
+            }
+        </script>
+        <body>
+            <div id="container">
+                <!-- input tag which is dyanamic -->
+                <input type="text" id="calScreen" value="" />
+                
+                <div id="calKeys">
+                    <!-- operand -->
+                    <input type="button" onclick ="clickFunction(0)" value="0"/>
+                    <input type="button" onclick ="clickFunction(1)" value="1"/>
+                    <input type="button" onclick ="clickFunction(2)" value="2"/>
+                    <input type="button" onclick ="clickFunction(3)" value="3"/>
+                    <input type="button" onclick ="clickFunction(4)" value="4"/>
+                    <input type="button" onclick ="clickFunction(5)" value="5"/>
+                    <input type="button" onclick ="clickFunction(6)" value="6"/>
+                    <input type="button" onclick ="clickFunction(7)" value="7"/>
+                    <input type="button" onclick ="clickFunction(8)" value="8"/>
+                    <input type="button" onclick ="clickFunction(9)" value="9"/>
+                    <!-- operator -->
+                    <input type="button" onclick ="clickFunction('+')" value="+"/>
+                    <input type="button" onclick ="clickFunction('-')" value="-"/>
+                    <input type="button" onclick ="clickFunction('*')" value="*"/>
+                    <input type="button" onclick ="clickFunction('/')" value="/"/>
+                    <input type="button" onclick ="clean()" value="C"/>
+                    <input type="button" onclick ="evaluation()" value="="/>
+                </div>
+                
+                </div>
+
+                <div>
+                <h2>Console:</h2>
+                <p id="showConsole"></p>
+                </div>
+                <div id = "messages">
+
+                </div>
+    
+        </body>
+    
+    </head>
