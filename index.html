@@ -8,40 +8,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Web Calculator</title>
         <!-- jQuery -->
-        <!--  -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
         <!-- linking javascript to HTMl -->
         <script type="text/javascript" src="main.js"></script>
+
         <!-- linking stylesheet to HTMl -->
         <link rel="stylesheet" href="style.css">
         <script>
             //document ready function
             $(() => {
-                addMessages({User:"sana", Input:"1+2=3"})
-                getMessages();
+                user =0
+                $("#equals").click(()=>{
+               
+                    getMessages()
+                    userCount()
+                })
             })
             function addMessages(message){
-                $("#messages").append(`<h3> ${message.User} </h3> <p> ${message.Input} </p>`)
+                $("#messages").append(`<h1> ${message.sessionID} </h1> <p> ${message.sessionValue} </p>`)
+                
             }
             //backend to front end
             // http get request
             function getMessages() {
                 $.get('http://localhost:8000/messages', (data) => {
-                    console.log(data)
-                    //callback that provides data
-                    data.forEach(addMessages);
+                    data.forEach(addMessages)
                 })
             }
-            
-            function getMessages(message) {
-                $.post('http://localhost:8000/messages', message)
+            function postMessage(message) {
+                $.post('http://localhost:3000/messages', message)
+            }
+            function userCount(){
+                count++
+                console.log(count)
             }
         </script>
         <body>
             <div id="container">
-                <!-- input tag which is dyanamic -->
                 <input type="text" id="calScreen" value="" />
-                
                 <div id="calKeys">
                     <!-- operand -->
                     <input type="button" onclick ="clickFunction(0)" value="0"/>
@@ -60,19 +64,16 @@
                     <input type="button" onclick ="clickFunction('*')" value="*"/>
                     <input type="button" onclick ="clickFunction('/')" value="/"/>
                     <input type="button" onclick ="clean()" value="C"/>
-                    <input type="button" onclick ="evaluation()" value="="/>
+                    <input type="button" id ="equals" onclick ="evaluation()" value="="/>
                 </div>
-                
-                </div>
-
-                <div>
-                <h2>Console:</h2>
-                <p id="showConsole"></p>
+            </div>
+                    <h1>Console:</h1>
+                    <p id="showConsole"></p>
+                  
                 </div>
                 <div id = "messages">
 
                 </div>
-    
         </body>
     
     </head>
