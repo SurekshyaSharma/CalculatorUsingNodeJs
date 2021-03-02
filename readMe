@@ -1,0 +1,18 @@
+
+
+Document
+https://developer.mozilla.org/en-US/docs/web/api/eventlistener#result
+https://codeforgeek.com/manage-session-using-node-js-express-4/
+https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
+Calculator Frontend
+https://freshman.tech/calculator/
+CSS Grid:
+https://freshman.tech/css-grid-calculator/
+
+install node 
+install npm
+
+npm install --save express-session
+npm install --save express express-session body-parser
+npm install cookie-parser
+npm install xlsx
