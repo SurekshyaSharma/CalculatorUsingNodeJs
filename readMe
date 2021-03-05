@@ -1,33 +1,25 @@
-
-
-Document
+Author: Surekshya Sharma
+# Document
 https://developer.mozilla.org/en-US/docs/web/api/eventlistener#result
 https://codeforgeek.com/manage-session-using-node-js-express-4/
 https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
-Calculator Frontend
-https://freshman.tech/calculator/
-CSS Grid:
-https://freshman.tech/css-grid-calculator/
+
 https://docs.mongodb.com/guides/server/read_queries/
-https://docs.mongodb.com/guides/server/read_queries/
+# installation
 
 install node 
 install npm
-
 npm install --save express-session
 npm install --save express express-session body-parser
 npm install cookie-parser
 npm install xlsx
 
-npm install mongodb
+# how to run a file
+1. In the terminal
+git clone https://github.com/SurekshyaSharma/CalculatorUsingNodeJs.git
+2.Or go to the git Project and download zip file https://github.com/SurekshyaSharma/CalculatorUsingNodeJs
+3.navigate to the repository locally and run the file
+node .\server.js
 
-npm install -g mongodb-realm-cli@1.1.0
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://calculator_db:<password>@cluster0.rgskf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+# Deployed at github
+ https://surekshyasharma.github.io/CalculatorUsingNodeJs/
