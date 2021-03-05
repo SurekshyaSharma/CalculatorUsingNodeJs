@@ -8,6 +8,8 @@ Calculator Frontend
 https://freshman.tech/calculator/
 CSS Grid:
 https://freshman.tech/css-grid-calculator/
+https://docs.mongodb.com/guides/server/read_queries/
+https://docs.mongodb.com/guides/server/read_queries/
 
 install node 
 install npm
@@ -16,3 +18,16 @@ npm install --save express-session
 npm install --save express express-session body-parser
 npm install cookie-parser
 npm install xlsx
+
+npm install mongodb
+
+npm install -g mongodb-realm-cli@1.1.0
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://calculator_db:<password>@cluster0.rgskf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});

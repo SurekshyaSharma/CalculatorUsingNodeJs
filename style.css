@@ -5,7 +5,7 @@ html {
   
   *, *::before, *::after {
     margin: 0;
-    padding: 0;
+    /* padding: 0; */
     box-sizing: inherit;
   }
   p{
@@ -36,7 +36,9 @@ html {
     padding-right: 20px;
     padding-left: 10px;
   }
-  
+  #hidden{
+    display:none ;
+  }
   
   #calKeys {
     display: grid;

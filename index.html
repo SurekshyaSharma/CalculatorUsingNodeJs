@@ -15,65 +15,65 @@
         <!-- linking stylesheet to HTMl -->
         <link rel="stylesheet" href="style.css">
         <script>
-            //document ready function
-            $(() => {
-                user =0
-                $("#equals").click(()=>{
+
+            $("#equals").click(()=>{
                
-                    getMessages()
-                    userCount()
-                })
+                getMessages()
             })
-            function addMessages(message){
-                $("#messages").append(`<h1> ${message.sessionID} </h1> <p> ${message.sessionValue} </p>`)
-                
-            }
-            //backend to front end
-            // http get request
-            function getMessages() {
-                $.get('http://localhost:8000/messages', (data) => {
-                    data.forEach(addMessages)
-                })
-            }
-            function postMessage(message) {
-                $.post('http://localhost:3000/messages', message)
-            }
-            function userCount(){
-                count++
-                console.log(count)
-            }
+  
+        function addMessages(message){
+            $("#cursor").append(`<h1> ${message.User} </h1> <p> ${message.input} </p>`)
+            
+        }
+        //backend to front end
+        // http get request
+        function getMessages() {
+            $.get(`http://localhost:8000/cursor`, (data) => {
+                data.forEach(addMessages)
+                console.log('tetkkl')
+            })
+        }
+        
         </script>
         <body>
             <div id="container">
                 <input type="text" id="calScreen" value="" />
+             
                 <div id="calKeys">
                     <!-- operand -->
-                    <input type="button" onclick ="clickFunction(0)" value="0"/>
-                    <input type="button" onclick ="clickFunction(1)" value="1"/>
-                    <input type="button" onclick ="clickFunction(2)" value="2"/>
-                    <input type="button" onclick ="clickFunction(3)" value="3"/>
-                    <input type="button" onclick ="clickFunction(4)" value="4"/>
-                    <input type="button" onclick ="clickFunction(5)" value="5"/>
-                    <input type="button" onclick ="clickFunction(6)" value="6"/>
-                    <input type="button" onclick ="clickFunction(7)" value="7"/>
-                    <input type="button" onclick ="clickFunction(8)" value="8"/>
-                    <input type="button" onclick ="clickFunction(9)" value="9"/>
-                    <!-- operator -->
-                    <input type="button" onclick ="clickFunction('+')" value="+"/>
-                    <input type="button" onclick ="clickFunction('-')" value="-"/>
-                    <input type="button" onclick ="clickFunction('*')" value="*"/>
-                    <input type="button" onclick ="clickFunction('/')" value="/"/>
-                    <input type="button" onclick ="clean()" value="C"/>
-                    <input type="button" id ="equals" onclick ="evaluation()" value="="/>
+                        <input type="button" onclick ="clickFunction(0)" value="0"/>
+                        <input type="button" onclick ="clickFunction(1)" value="1"/>
+                        <input type="button" onclick ="clickFunction(2)" value="2"/>
+                        <input type="button" onclick ="clickFunction(3)" value="3"/>
+                        <input type="button" onclick ="clickFunction(4)" value="4"/>
+                        <input type="button" onclick ="clickFunction(5)" value="5"/>
+                        <input type="button" onclick ="clickFunction(6)" value="6"/>
+                        <input type="button" onclick ="clickFunction(7)" value="7"/>
+                        <input type="button" onclick ="clickFunction(8)" value="8"/>
+                        <input type="button" onclick ="clickFunction(9)" value="9"/>
+                        <!-- operator -->
+                        <input type="button" onclick ="clickFunction('+')" value="+"/>
+                        <input type="button" onclick ="clickFunction('-')" value="-"/>
+                        <input type="button" onclick ="clickFunction('*')" value="*"/>
+                        <input type="button" onclick ="clickFunction('/')" value="/"/>
+                        <input type="button" onclick ="clean()" value="C"/>
+                        <input type="button" id ="equals" onclick ="evaluation()" value="="/>
                 </div>
             </div>
-                    <h1>Console:</h1>
-                    <p id="showConsole"></p>
-                  
-                </div>
-                <div id = "messages">
+            <div>
+                <h1>Console:</h1>
+                <h1 id="showConsole"></h1>
+                <form action="/new" method="POST" action="mongodb+srv://calculator_db:JQ!k3sAbjDxeZPK@cluster0.rgskf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority">
+                    <label for="eval"></label>
+                    <input type ="text"id="eval" name="eval"/>
+                </form>
+                 <div>
+                     
+                <p id="cursor"></p>
 
-                </div>
+
+                 </div>
+            </div>
         </body>
     
     </head>
