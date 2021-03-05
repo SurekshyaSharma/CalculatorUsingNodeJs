@@ -1,1 +1,63 @@
 Hi I am MUrphy The Redbone Coon Hound.
+const express = require('express');
+var assert = require('assert');
+var router = express.Router();
+const mongo = require('mongodb')
+const MongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose')
+var bodyParser = require('body-parser')
+//connecting the html with the express server
+const app = express();
+// app.use(express.json());
+app.use(express.static(__dirname))
+app.use("/", router);
+
+const port = 8000;
+URL = `mongodb://localhost:27017/userInput`
+//connecting ith mongodb
+const uri = "mongodb+srv://calculator_db:JQ!k3sAbjDxeZPK@cluster0.rgskf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => { 
+  const collection = client.db("userInput").collection("log");
+  // perform actions on the collection object testing data
+  // collection.insertOne({ "User" : "input",
+  //   input : "5+ 14 = 19",
+  //   }
+  //   )
+
+  console.log('connected')
+  client.close();
+});
+
+//make an request to read and show in backend => front end
+
+
+//make an request to read and show in backend => front end
+
+
+// make an request to frontend => back end and 
+
+
+// var mongoose = require('mongoose'),
+//     Schema = mongoose.Schema;
+// var UserSchema = new Schema({
+//     name: String,
+    
+// });
+
+// var userInput = mongoose.model('log', UserSchema);
+// app.post('/new', (req, res) => {
+//   MongoClient.connect(uri, function(err, db) {
+//       new userInput({
+//         eval:res.body.eval
+//       }).save(function(err,doc){
+//         if (err) res.json(error)
+//         else res.send("Success posting data")
+//       })
+//   });
+// });
+
+app.listen(port, () => {
+  console.log(`Node server listening on port ${port}!`)
+  console.log(`go to http://localhost:8000/`)
+});
