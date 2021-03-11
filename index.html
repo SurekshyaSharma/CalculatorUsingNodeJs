@@ -15,30 +15,40 @@
         <!-- linking stylesheet to HTMl -->
         <link rel="stylesheet" href="style.css">
         <script>
-
-            $("#equals").click(()=>{
-               
-                getMessages()
+            $(()=>{
+                $("#equals").click(()=>{
+                   /* addMessages({input:"4 + 6 = 10"
+                    })*/
+                    getMessages();
+                })
+                
             })
+         
   
-        function addMessages(message){
-            $("#cursor").append(`<h1> ${message.User} </h1> <p> ${message.input} </p>`)
+        function addMessages(value){
+            $("#showData").append(`
+                <p>${value.message.input} </p>
+             `)
             
         }
         //backend to front end
         // http get request
         function getMessages() {
-            $.get(`http://localhost:8000/cursor`, (data) => {
-                data.forEach(addMessages)
-                console.log('tetkkl')
+            $.get('http://localhost:8000/doc', (data) => {
+                addMessages(data)
+                
             })
         }
-        
+        function postMessages() {
+            $.post('mongodb+srv://calculator_db:JQ!k3sAbjDxeZPK@cluster0.rgskf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', (data) => {
+                
+                
+            })
+        }
         </script>
         <body>
             <div id="container">
                 <input type="text" id="calScreen" value="" />
-             
                 <div id="calKeys">
                     <!-- operand -->
                         <input type="button" onclick ="clickFunction(0)" value="0"/>
@@ -65,14 +75,9 @@
                 <h1 id="showConsole"></h1>
                 <form action="/new" method="POST" action="mongodb+srv://calculator_db:JQ!k3sAbjDxeZPK@cluster0.rgskf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority">
                     <label for="eval"></label>
-                    <input type ="text"id="eval" name="eval"/>
+                    <input type ="text" id="eval" name="eval"/>
                 </form>
-                 <div>
-                     
-                <p id="cursor"></p>
-
-
-                 </div>
+                 <div><p id="showData"></p></div>
             </div>
         </body>
     
